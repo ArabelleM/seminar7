@@ -6,7 +6,7 @@ int[,] matrix = new int[m, n];
 void FillMatrix(int[,] matr) {
     for(int i = 0; i < matr.GetLength(0); i++) {
         for(int j = 0; j < matr.GetLength(1); j++) {
-            matr[i, j] = new Random().Next(-999, 1000);
+            matr[i, j] = new Random().Next(0, 10);
         }
     }
 }
@@ -24,12 +24,16 @@ void PrintMatrix(int[,] mat) {
 
 PrintMatrix(matrix);
 
-int[] AverangeOfColumns(int[,] matr1) { 
-    int[] averange = new int[matr1.GetLength(1)];
+double[] AverangeOfColumns(int[,] matr1) { 
+    int[] sumOfColmn = new int[matr1.GetLength(1)];
     for(int i = 0; i < matr1.GetLength(1); i++) {
         for(int j = 0; j < matr1.GetLength(0); j++) {
-            averange[i] = (averange[i] + matr1[j, i]) / matr1.GetLength(0);
+            sumOfColmn[i] = (sumOfColmn[i] + matr1[j, i]); // / matr1.GetLength(0);
         }
+    }
+    double[] averange = new double[matr1.GetLength(1)];
+    for(int k = 0; k < matr1.GetLength(1); k++) {
+        averange[k] = Convert.ToDouble(sumOfColmn[k]) / matr1.GetLength(0);
     }
     return averange;
 }
